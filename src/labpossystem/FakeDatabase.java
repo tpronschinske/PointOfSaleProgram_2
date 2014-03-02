@@ -34,17 +34,24 @@ public class FakeDatabase {
 
     };
 
-    public final Customer retrieveCustomer(final String CustomerID) {
+    public final Customer retrieveCustomer(final String customerID) {
         Customer customer = null;
         if (customerID == null || customerID.length() == 0) {
             System.out.println("Must have customer ID to process sale");
+        } else {
+            for (Customer c : customer) {
+                if (customerID.equals(c.getCustomerID())) {
+                    customer = c;
+                    break;
+                }
+            }
         }
-        return null;
+        return customer;
+
     }
 
     public final Product retrieveProduct(final String productID) {
         Product product = null;
-        // validation is needed for method parameter
         if (productID == null || productID.length() == 0) {
             System.out.println("Sorry must enter a product");
         } else {

@@ -18,8 +18,8 @@ public class Customer {
     
     
     public Customer(String customerName, String customerID) {
-        this.customerName = customerName;
-        this.customerID = customerID;   
+        setCustomerName(customerName);
+        setCustomerID(customerID); 
     }
     public String getCustomerName() {
         return customerName;
