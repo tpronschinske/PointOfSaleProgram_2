@@ -43,10 +43,6 @@ public class LineItem {
         return product.getDiscountStrategy().getDiscountAmount(product.getPrice(), quantity);
     }
 
-    public void setAmountSaved(double amountSaved) {
-        this.amountSaved = amountSaved;
-    }
-
     public Product getProduct() {
         return product;
     }
@@ -63,6 +59,6 @@ public class LineItem {
         this.fakeDatabase = fakeDatabase;
     }
 
- 
+
     
 }

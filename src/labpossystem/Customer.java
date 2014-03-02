@@ -15,6 +15,8 @@ public class Customer {
     private String customerName;
     private String customerID;
     
+    
+    
     public Customer(String customerName, String customerID) {
         this.customerName = customerName;
         this.customerID = customerID;   
@@ -35,11 +37,7 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public static void main(String[] args) {
-        
-      
-        
-    }
+  
    
     
     

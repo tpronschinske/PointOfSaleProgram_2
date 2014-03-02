@@ -14,11 +14,13 @@ import java.util.Date;
  */
 public class RecieptConsoleOutput implements RecieptOutputStrategy {
     
-  private final String storeName = "Kohls";
+    private final String storeName = "Kohls";
+    private LineItem[] lineItem;
     
+
     @Override
-    public void getRecieptOutput(){
-          
+    public void getRecieptOutput() {
+
           Date date = new Date();
           
           System.out.println("Store: " + storeName + "  ---   Date:" + date.toString());
@@ -32,8 +34,12 @@ public class RecieptConsoleOutput implements RecieptOutputStrategy {
     
     @Override
     public void generateRecieptItems(){
+       
+     
+        
         
     }
+    
     
     
 }
