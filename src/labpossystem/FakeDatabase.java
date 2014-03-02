@@ -12,6 +12,7 @@ package labpossystem;
  */
 public class FakeDatabase {
 
+    
     private Customer[] customer = {
         new Customer("Henry Ford", "A187"),
         new Customer("Gerald Ford", "A121"),
@@ -34,11 +35,12 @@ public class FakeDatabase {
 
     };
 
-    public final Customer retrieveCustomer(final String customerID) {
+    public final Customer retrieveCustomer(String customerID) {
         Customer customer = null;
         if (customerID == null || customerID.length() == 0) {
             System.out.println("Must have customer ID to process sale");
-        } else {
+            return null;
+        } else{
             for (Customer c : customer) {
                 if (customerID.equals(c.getCustomerID())) {
                     customer = c;
@@ -50,7 +52,7 @@ public class FakeDatabase {
 
     }
 
-    public final Product retrieveProduct(final String productID) {
+    public final Product retrieveProduct(String productID) {
         Product product = null;
         if (productID == null || productID.length() == 0) {
             System.out.println("Sorry must enter a product");

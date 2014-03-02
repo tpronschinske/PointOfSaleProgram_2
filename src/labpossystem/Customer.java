@@ -15,11 +15,9 @@ public class Customer {
     private String customerName;
     private String customerID;
     
-    
-    
-    public Customer(String customerName, String customerID) {
-        setCustomerName(customerName);
+    public Customer(String customerID,String customerName) {
         setCustomerID(customerID); 
+        setCustomerName(customerName);
     }
     public String getCustomerName() {
         return customerName;

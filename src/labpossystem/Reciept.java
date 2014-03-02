@@ -16,17 +16,31 @@ public class Reciept {
     private FakeDatabase fakedatabase;
     private Customer customer;
     private LineItem[] lineItem;
+   
 
-    public Reciept(RecieptOutputStrategy recieptOutputStrategy, FakeDatabase fakedatabase, Customer customerID) {
+    public Reciept(RecieptOutputStrategy recieptOutputStrategy, FakeDatabase fakedatabase,String customerID ) {
         this.recieptOutputStrategy = recieptOutputStrategy;
         this.fakedatabase = fakedatabase;
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
+      
 
     }
 
-   
+   private final Customer retrieveCustomer(String customerID){
+       Customer customers = fakeDatabase.retrieveCustomer(customerID);
+       return customers;
+   }
     
 
+   
+   private double getTotalBill(){
+       double total = 0.0;
+       for(LineItem items: lineItems){
+           total += items.getProduct().getPrice();
+           
+       }
+       return total;
+   }
     
 }
