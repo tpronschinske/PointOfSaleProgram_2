@@ -16,7 +16,9 @@ public interface RecieptOutputStrategy {
     public abstract void getRecieptOutput();
     
     //to populate the reciept
-    public abstract void generateRecieptItems();
+    public abstract void generateRecieptTotals();
+    
+    
     
     
 }

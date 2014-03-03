@@ -6,6 +6,8 @@
 
 package labpossystem;
 
+import java.util.Date;
+
 /**
  *
  * @author Celeste
@@ -35,7 +37,7 @@ public class Reciept {
     
 
   //Gets the bill total before discount
-   private double getTotalBill(){
+   private double getTotalBillForReciept(){
        double billTotal = 0.0;
        for(LineItem items: lineItem){
            billTotal += items.getProduct().getPrice();
@@ -45,7 +47,7 @@ public class Reciept {
    }
 
    //Gets discount of all items
-   public double getTotalDiscount(){
+   public double getTotalDiscountForReciept(){
        double discountTotal = 0.0;
        for(LineItem items: lineItem){
            discountTotal += items.getAmountSaved();
@@ -71,10 +73,32 @@ public class Reciept {
        
    }
    
+   public final void getRecieptOutput(){
+       
+          Date date = new Date();
+          
+          System.out.println("Store: Kohls Department Store" + "  ---   Date of Sale:" + date.toString());
+          System.out.println("CustomerID: " + customer.getCustomerID() + "Customer Name: " + customer.getCustomerName());
+          System.out.println("-------------------------------------------------------------------------------------------");
+          System.out.println("Item ID:          Item Description:       Price:         Quantity:          Discount: " );
+          System.out.println("-------------------------------------------------------------------------------------------");
+          System.out.println("-------------------------------------------------------------------------------------------");
+        for (LineItem items : lineItem) {
+           items.getProduct().getProductID();
+           items.getProduct().getProductName();
+           items.getProduct().getPrice();
+           items.getQuantity();
+           items.getAmountSaved();
+        }
+            getRecieptTotals();
+   }
    
-   
-   
-   
-   
-   
+   public final void getRecieptTotals(){
+        double overallBillTotal = getTotalBillForReciept();
+        double overallTotalDiscount = getTotalDiscountForReciept();
+        
+          System.out.println("-------------------------------------------------------------------------------------------");
+          System.out.println(                                                         "Bill Total: "  +  "Discount Total: ");
+          System.out.println("                                                      $" +overallBillTotal + "  $" + overallTotalDiscount);
+   }
 }

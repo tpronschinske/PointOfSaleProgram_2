@@ -10,10 +10,22 @@ package labpossystem;
  *
  * @author tpronschinske
  */
-public class SelfServiceCashRegister {
+public class SelfServiceCashRegister implements RegisterStrategy {
 
    
+    private Reciept reciept;
+
+    public SelfServiceCashRegister(Reciept reciept) {
+        this.reciept = reciept;
+    }
     
+    @Override
+    public void getRegisterType(){
+        
+       
+        
+        
+    }
     
     
     
