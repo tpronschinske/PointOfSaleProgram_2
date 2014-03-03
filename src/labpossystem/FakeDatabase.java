@@ -13,7 +13,7 @@ package labpossystem;
 public class FakeDatabase {
 
     
-    private Customer[] customer = {
+    private Customer[] customers = {
         new Customer("Henry Ford", "A187"),
         new Customer("Gerald Ford", "A121"),
         new Customer("Joseph Brown", "G589"),
@@ -41,7 +41,7 @@ public class FakeDatabase {
             System.out.println("Must have customer ID to process sale");
             return null;
         } else{
-            for (Customer c : customer) {
+            for (Customer c : customers) {
                 if (customerID.equals(c.getCustomerID())) {
                     customer = c;
                     break;

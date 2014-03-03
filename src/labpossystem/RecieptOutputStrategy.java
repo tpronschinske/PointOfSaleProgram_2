@@ -12,7 +12,7 @@ package labpossystem;
  */
 public interface RecieptOutputStrategy {
     
-    // prints reciept header etc,
+    // prints reciept header 
     public abstract void getRecieptOutput();
     
     //to populate the reciept

@@ -13,69 +13,68 @@ package labpossystem;
 public class Reciept {
     
     private RecieptOutputStrategy recieptOutputStrategy;
-    private FakeDatabase fakedatabase;
+    private FakeDatabase fakeDatabase;
     private Customer customer;
     private LineItem[] lineItem;
    
 
     public Reciept(RecieptOutputStrategy recieptOutputStrategy, FakeDatabase fakedatabase,String customerID ) {
         this.recieptOutputStrategy = recieptOutputStrategy;
-        this.fakedatabase = fakedatabase;
+        this.fakeDatabase = fakedatabase;
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
       
 
     }
 
-   /// Fake Database underlined in red with  
+     
    private Customer retrieveCustomer(String customerID){
        Customer customer = fakeDatabase.retrieveCustomer(customerID);
        return customer;
    }
     
 
-   //Error lineItems
+  //Gets the bill total before discount
    private double getTotalBill(){
-       double total = 0.0;
-       for(LineItem items: lineItems){
-           total += items.getProduct().getPrice();
+       double billTotal = 0.0;
+       for(LineItem items: lineItem){
+           billTotal += items.getProduct().getPrice();
            
        }
-       return total;
+       return billTotal;
    }
 
-    public RecieptOutputStrategy getRecieptOutputStrategy() {
-        return recieptOutputStrategy;
-    }
-
-    public void setRecieptOutputStrategy(RecieptOutputStrategy recieptOutputStrategy) {
-        this.recieptOutputStrategy = recieptOutputStrategy;
-    }
-
-    public FakeDatabase getFakedatabase() {
-        return fakedatabase;
-    }
-
-    public void setFakedatabase(FakeDatabase fakedatabase) {
-        this.fakedatabase = fakedatabase;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public LineItem[] getLineItem() {
-        return lineItem;
-    }
-
-    public void setLineItem(LineItem[] lineItem) {
-        this.lineItem = lineItem;
-    }
-    
+   //Gets discount of all items
+   public double getTotalDiscount(){
+       double discountTotal = 0.0;
+       for(LineItem items: lineItem){
+           discountTotal += items.getAmountSaved();
+       }
+       return discountTotal;
+   }
+   
+   
+   //Line item finds product through its ID
+   
+   public final void addNewLineItem(String productID, double quantity){
+       LineItem items = new LineItem(fakeDatabase, productID, quantity);
+       addNewItemToArray(items);
+   }
+   
+   
+   public final void addNewItemToArray(LineItem items){
+        LineItem[] tempItems = new LineItem[lineItem.length + 1];
+        System.arraycopy(lineItem, 0, tempItems, 0, lineItem.length);
+        tempItems[lineItem.length] = items;
+        lineItem = tempItems;
+       
+       
+   }
+   
+   
+   
+   
+   
    
    
 }

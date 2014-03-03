@@ -20,7 +20,7 @@ public class RecieptConsoleOutput implements RecieptOutputStrategy {
 
     @Override
     public void getRecieptOutput() {
-
+          
           Date date = new Date();
           
           System.out.println("Store: " + storeName + "  ---   Date of Sale:" + date.toString());
@@ -29,28 +29,25 @@ public class RecieptConsoleOutput implements RecieptOutputStrategy {
           System.out.println("-------------------------------------------------------------------------------------------");
           System.out.println("-------------------------------------------------------------------------------------------");
           generateRecieptItems();
+          
+          System.out.println(                                                         "Bill Total: "  +  "Discount Total: ");
+          
+          
+          
     }
     
     
     @Override
     public void generateRecieptItems(){
-       //Error
-     for(LineItem items : lineItems){
+    
+     for(LineItem items : lineItem){
          items.getProduct().getProductID();
          items.getProduct().getProductName();
          items.getProduct().getPrice();
          items.getQuantity();
          items.getAmountSaved();
      }
-     
-     //Error
-     double billTotal = getTotalBill();
-     double discountTotal;
-     double billTotalAfterDiscount;
-     
-     
-         
-         
+        
      }
         
         
