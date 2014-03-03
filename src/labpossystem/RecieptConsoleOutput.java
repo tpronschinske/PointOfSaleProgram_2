@@ -34,7 +34,7 @@ public class RecieptConsoleOutput implements RecieptOutputStrategy {
     
     @Override
     public void generateRecieptItems(){
-       
+       //Error
      for(LineItem items : lineItems){
          items.getProduct().getProductID();
          items.getProduct().getProductName();
@@ -43,7 +43,7 @@ public class RecieptConsoleOutput implements RecieptOutputStrategy {
          items.getAmountSaved();
      }
      
-     
+     //Error
      double billTotal = getTotalBill();
      double discountTotal;
      double billTotalAfterDiscount;

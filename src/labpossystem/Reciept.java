@@ -27,13 +27,14 @@ public class Reciept {
 
     }
 
-   private final Customer retrieveCustomer(String customerID){
-       Customer customers = fakeDatabase.retrieveCustomer(customerID);
-       return customers;
+   /// Fake Database underlined in red with  
+   private Customer retrieveCustomer(String customerID){
+       Customer customer = fakeDatabase.retrieveCustomer(customerID);
+       return customer;
    }
     
 
-   
+   //Error lineItems
    private double getTotalBill(){
        double total = 0.0;
        for(LineItem items: lineItems){
@@ -42,5 +43,39 @@ public class Reciept {
        }
        return total;
    }
+
+    public RecieptOutputStrategy getRecieptOutputStrategy() {
+        return recieptOutputStrategy;
+    }
+
+    public void setRecieptOutputStrategy(RecieptOutputStrategy recieptOutputStrategy) {
+        this.recieptOutputStrategy = recieptOutputStrategy;
+    }
+
+    public FakeDatabase getFakedatabase() {
+        return fakedatabase;
+    }
+
+    public void setFakedatabase(FakeDatabase fakedatabase) {
+        this.fakedatabase = fakedatabase;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public LineItem[] getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(LineItem[] lineItem) {
+        this.lineItem = lineItem;
+    }
     
+   
+   
 }

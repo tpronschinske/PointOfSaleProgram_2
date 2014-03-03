@@ -34,7 +34,7 @@ public class FakeDatabase {
         new Product("A789", "Men's Jeans", 19.95, new NoDiscount())
 
     };
-
+    //Error
     public final Customer retrieveCustomer(String customerID) {
         Customer customer = null;
         if (customerID == null || customerID.length() == 0) {
@@ -49,7 +49,6 @@ public class FakeDatabase {
             }
         }
         return customer;
-
     }
 
     public final Product retrieveProduct(String productID) {
