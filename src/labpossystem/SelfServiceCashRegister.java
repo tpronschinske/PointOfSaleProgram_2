@@ -15,8 +15,8 @@ public class SelfServiceCashRegister  {
    
     private Reciept reciept;
 
-    public void newCustomerSale(Reciept reciept, FakeDatabase fakeDatabase,String customerID){
-        reciept = new Reciept(reciept,fakeDatabase,customerID);
+    public void newCustomerSale(RecieptOutputStrategy newReciept, FakeDatabase fakeDatabase,String customerID){
+       reciept = new Reciept(newReciept,fakeDatabase,customerID);
     }
     
     
@@ -29,6 +29,14 @@ public class SelfServiceCashRegister  {
     public void endSale(){
         reciept.getRecieptOutput();
         reciept.generateRecieptTotals();
+    }
+
+    public Reciept getReciept() {
+        return reciept;
+    }
+
+    public void setReciept(Reciept reciept) {
+        this.reciept = reciept;
     }
     
     

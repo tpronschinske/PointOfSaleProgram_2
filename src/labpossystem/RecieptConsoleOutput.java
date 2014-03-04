@@ -12,17 +12,17 @@ package labpossystem;
  */
 public class RecieptConsoleOutput implements RecieptOutputStrategy {
 
+    //NOT USED YET ONLY CREATED THE STRATEGY
+    
+    
     @Override
     public void getRecieptOutput() {
-        
-        
+   
     }
     
     @Override
     public void generateRecieptTotals(){
-        
- 
-        
+   
     }
 
     

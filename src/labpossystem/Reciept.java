@@ -14,15 +14,15 @@ import java.util.Date;
  */
 public class Reciept implements RecieptOutputStrategy {
     
-    private Reciept reciept;
+    private RecieptOutputStrategy newReciept;
     private FakeDatabase fakeDatabase;
     private Customer customer;
     private LineItem[] lineItem;
    
 
-    public Reciept(Reciept reciept, FakeDatabase fakedatabase,String customerID ) {
-        this.reciept = reciept;
-        this.fakeDatabase = fakedatabase;
+    public Reciept(RecieptOutputStrategy newReciept, FakeDatabase fakeDatabase,String customerID) {
+        this.newReciept = newReciept;
+        this.fakeDatabase = fakeDatabase;
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
       
@@ -104,12 +104,14 @@ public class Reciept implements RecieptOutputStrategy {
           System.out.println("                                                      $" +overallBillTotal + "  $" + overallTotalDiscount);
    }
 
-    public Reciept getReciept() {
-        return reciept;
+   
+   
+    public RecieptOutputStrategy getReciept() {
+        return newReciept;
     }
 
-    public void setReciept(Reciept reciept) {
-        this.reciept = reciept;
+    public void setRecieptOutputStrategy(RecieptOutputStrategy newReciept) {
+        this.newReciept = newReciept;
     }
 
     public FakeDatabase getFakeDatabase() {
