@@ -13,7 +13,7 @@ package labpossystem;
 public interface RegisterStrategy {
     
     //allows for multiple registers
-    public abstract void getRegisterType();
-    
+//    public abstract void getRegisterType();
+    //not built yet
     
 }

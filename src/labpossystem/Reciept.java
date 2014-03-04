@@ -12,16 +12,16 @@ import java.util.Date;
  *
  * @author Celeste
  */
-public class Reciept {
+public class Reciept implements RecieptOutputStrategy {
     
-    private RecieptOutputStrategy recieptOutputStrategy;
+    private Reciept reciept;
     private FakeDatabase fakeDatabase;
     private Customer customer;
     private LineItem[] lineItem;
    
 
-    public Reciept(RecieptOutputStrategy recieptOutputStrategy, FakeDatabase fakedatabase,String customerID ) {
-        this.recieptOutputStrategy = recieptOutputStrategy;
+    public Reciept(Reciept reciept, FakeDatabase fakedatabase,String customerID ) {
+        this.reciept = reciept;
         this.fakeDatabase = fakedatabase;
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
@@ -73,6 +73,7 @@ public class Reciept {
        
    }
    
+    @Override
    public final void getRecieptOutput(){
        
           Date date = new Date();
@@ -90,10 +91,11 @@ public class Reciept {
            items.getQuantity();
            items.getAmountSaved();
         }
-            getRecieptTotals();
+            generateRecieptTotals();
    }
    
-   public final void getRecieptTotals(){
+    @Override
+   public final void generateRecieptTotals(){
         double overallBillTotal = getTotalBillForReciept();
         double overallTotalDiscount = getTotalDiscountForReciept();
         
@@ -101,4 +103,40 @@ public class Reciept {
           System.out.println(                                                         "Bill Total: "  +  "Discount Total: ");
           System.out.println("                                                      $" +overallBillTotal + "  $" + overallTotalDiscount);
    }
+
+    public Reciept getReciept() {
+        return reciept;
+    }
+
+    public void setReciept(Reciept reciept) {
+        this.reciept = reciept;
+    }
+
+    public FakeDatabase getFakeDatabase() {
+        return fakeDatabase;
+    }
+
+    public void setFakeDatabase(FakeDatabase fakeDatabase) {
+        this.fakeDatabase = fakeDatabase;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public LineItem[] getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(LineItem[] lineItem) {
+        this.lineItem = lineItem;
+    }
+   
+   
+   
+   
 }

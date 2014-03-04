@@ -14,10 +14,10 @@ public class FakeDatabase {
 
     
     private Customer[] customers = {
-        new Customer("Henry Ford", "A187"),
-        new Customer("Gerald Ford", "A121"),
-        new Customer("Joseph Brown", "G589"),
-        new Customer("Jimmy Dean", "S227")
+        new Customer("Henry Ford", "AX187"),
+        new Customer("Gerald Ford", "AX121"),
+        new Customer("Joseph Brown", "GX589"),
+        new Customer("Jimmy Dean", "SX227")
     };
 
     private Product[] products = {

@@ -10,23 +10,26 @@ package labpossystem;
  *
  * @author tpronschinske
  */
-public class SelfServiceCashRegister implements RegisterStrategy {
+public class SelfServiceCashRegister  {
 
    
     private Reciept reciept;
 
-    public SelfServiceCashRegister(Reciept reciept) {
-        this.reciept = reciept;
+    public void newCustomerSale(Reciept reciept, FakeDatabase fakeDatabase,String customerID){
+        reciept = new Reciept(reciept,fakeDatabase,customerID);
     }
     
-    @Override
-    public void getRegisterType(){
+    
+    public void addNewItemToSale(String productID, double quantity){
         
-       
-        
-        
+        reciept.addNewLineItem(productID, quantity);
     }
     
+    
+    public void endSale(){
+        reciept.getRecieptOutput();
+        reciept.generateRecieptTotals();
+    }
     
     
 }
