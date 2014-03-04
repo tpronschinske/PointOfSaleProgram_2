@@ -27,9 +27,7 @@ public class LabPosSystem {
      newSale.addNewItemToSale("A164", 1);
      newSale.addNewItemToSale("A111", 1);
      newSale.endSale();
-     
-     
-     
+
     }
     
 }
