@@ -12,13 +12,11 @@ package labpossystem;
  */
 public interface RecieptOutputStrategy {
     
-    // prints reciept header with items 
-    public abstract void getRecieptOutput();
-    
-    //to populate the reciept totals
-    public abstract void generateRecieptTotals();
-    
-    
+    //generates reciept 
+    public abstract void getRecieptOutput(String data);
+
+   
+ 
     
     
 }

@@ -14,7 +14,7 @@ public class BuyOneGetOneFreeDiscount implements DiscountStrategy {
       
     private double discountRate = 0.0;
    
-    //
+    
     public BuyOneGetOneFreeDiscount() {
         this.discountRate = discountRate;
     }

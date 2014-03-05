@@ -6,25 +6,26 @@
 
 package labpossystem;
 
+
 /**
  *
  * @author tpronschinske
  */
 public class RecieptConsoleOutput implements RecieptOutputStrategy {
-
-    //NOT USED YET ONLY CREATED THE STRATEGY
-    
     
     @Override
-    public void getRecieptOutput() {
-   
+    public void getRecieptOutput(String data) {
+        System.out.println(data);
     }
     
-    @Override
-    public void generateRecieptTotals(){
-   
-    }
+  
 
     
+
 }
+    
+   
+
+    
+
 

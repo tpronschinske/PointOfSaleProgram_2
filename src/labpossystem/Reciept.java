@@ -12,29 +12,26 @@ import java.util.Date;
  *
  * @author Celeste
  */
-public class Reciept implements RecieptOutputStrategy {
+public class Reciept {
     
-    private RecieptOutputStrategy newReciept;
+    private RecieptOutputStrategy output;
     private FakeDatabase fakeDatabase;
     private Customer customer;
     private LineItem[] lineItem;
-   
+    private int recieptNumber;
 
-    public Reciept(RecieptOutputStrategy newReciept, FakeDatabase fakeDatabase,String customerID) {
-        this.newReciept = newReciept;
+    public Reciept(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID) {
+        this.output = output;
         this.fakeDatabase = fakeDatabase;
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
-      
-
+        recieptNumber++;
     }
-
      
    private Customer retrieveCustomer(String customerID){
        Customer customer = fakeDatabase.retrieveCustomer(customerID);
        return customer;
    }
-    
 
   //Gets the bill total before discount
    private double getTotalBillForReciept(){
@@ -55,63 +52,77 @@ public class Reciept implements RecieptOutputStrategy {
        return discountTotal;
    }
    
-   
-   //Line item finds product through its ID
-   
+   //Line item finds product through its ID 
    public final void addNewLineItem(String productID, double quantity){
        LineItem items = new LineItem(fakeDatabase, productID, quantity);
        addNewItemToArray(items);
    }
-   
    
    public final void addNewItemToArray(LineItem items){
         LineItem[] tempItems = new LineItem[lineItem.length + 1];
         System.arraycopy(lineItem, 0, tempItems, 0, lineItem.length);
         tempItems[lineItem.length] = items;
         lineItem = tempItems;
-       
+
+   }
+   
+   public final void getRecieptOutput(){
+       getRecieptHeader();
+       getRecieptItems();
+       getRecieptTotals();
        
    }
    
-    @Override
-   public final void getRecieptOutput(){
+   public final void getRecieptHeader(){
        
           Date date = new Date();
+          StringBuilder recieptHeader = new StringBuilder();
           
-          System.out.println("Store: Kohls Department Store" + "  ---   Date of Sale:" + date.toString());
-          System.out.println("CustomerID: " + customer.getCustomerID() + "Customer Name: " + customer.getCustomerName());
-          System.out.println("-------------------------------------------------------------------------------------------");
-          System.out.println("Item ID:          Item Description:       Price:         Quantity:          Discount: " );
-          System.out.println("-------------------------------------------------------------------------------------------");
-          System.out.println("-------------------------------------------------------------------------------------------");
-        for (LineItem items : lineItem) {
-           items.getProduct().getProductID();
-           items.getProduct().getProductName();
-           items.getProduct().getPrice();
-           items.getQuantity();
-           items.getAmountSaved();
-        }
-            generateRecieptTotals();
+          recieptHeader.append("Store: Kohls Department Store" + "  ---   Date of Sale:").append(date.toString());
+          recieptHeader.append("CustomerID: ").append(customer.getCustomerID()).append("Customer Name: ").append(customer.getCustomerName());
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
+          recieptHeader.append("Item ID:          Item Description:       Price:         Quantity:          SubTotal:       Discount: " );
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
+         output.getRecieptOutput(recieptHeader.toString());
+          
    }
    
-    @Override
-   public final void generateRecieptTotals(){
+   public final void getRecieptItems(){
+       
+       StringBuilder recieptItem = new StringBuilder();
+       
+        for (LineItem items : lineItem) {
+           recieptItem.append(items.getProduct().getProductID());
+           recieptItem.append(items.getProduct().getProductName());
+           recieptItem.append(items.getProduct().getPrice());
+           recieptItem.append(items.getQuantity());
+           recieptItem.append(items.getSubtotalForItem());
+           recieptItem.append(items.getAmountSaved());
+        }         
+        
+         output.getRecieptOutput(recieptItem.toString());
+   }
+   
+   public final void getRecieptTotals(){
+       
+        StringBuilder recieptTotalFooter = new StringBuilder();
+        
         double overallBillTotal = getTotalBillForReciept();
         double overallTotalDiscount = getTotalDiscountForReciept();
         
-          System.out.println("-------------------------------------------------------------------------------------------");
-          System.out.println(                                                         "Bill Total: "  +  "Discount Total: ");
-          System.out.println("                                                      $" +overallBillTotal + "  $" + overallTotalDiscount);
+          recieptTotalFooter.append("-------------------------------------------------------------------------------------------");
+          recieptTotalFooter.append(                                                        "Bill Total: "  +  "Discount Total: ");
+          recieptTotalFooter.append("                                                      $").append(overallBillTotal).append("  $").append(overallTotalDiscount);
+    output.getRecieptOutput(recieptTotalFooter.toString());
    }
-
    
-   
-    public RecieptOutputStrategy getReciept() {
-        return newReciept;
+    public RecieptOutputStrategy getOutput() {
+        return output;
     }
 
-    public void setRecieptOutputStrategy(RecieptOutputStrategy newReciept) {
-        this.newReciept = newReciept;
+    public void setRecieptOutputStrategy(RecieptOutputStrategy output) {
+        this.output = output;
     }
 
     public FakeDatabase getFakeDatabase() {

@@ -50,9 +50,6 @@ public class Product {
     public final void setDiscountStrategy(DiscountStrategy discountStrategy) {
         this.discountStrategy = discountStrategy;
     }
-
-
-  
-  
+ 
     
 }

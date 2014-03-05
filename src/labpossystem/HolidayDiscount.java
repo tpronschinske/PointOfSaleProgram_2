@@ -12,7 +12,7 @@ package labpossystem;
  */
 public class HolidayDiscount implements DiscountStrategy {
 
-    private double discountRate = 0;
+    private double discountRate = 0.0;
     private String holiday;
 
     public HolidayDiscount(String holiday) {

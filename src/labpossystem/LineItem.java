@@ -24,7 +24,19 @@ public class LineItem {
         setQuantity(quantity);
     }
 
-
+    // line item needs the information to display in reciept
+    // inputed to the line item in order to display to line item reciept
+    // object ---------------------------//method
+    public double getAmountSaved() {
+        return product.getDiscountStrategy().getDiscountAmount(product.getPrice(), quantity);
+    }
+    
+     //Added Subtotal
+    
+    public double getSubtotalForItem(){
+        return product.getPrice() * quantity;
+    }
+    
     public final Product retrieveProduct(String productID){
         return fakeDatabase.retrieveProduct(productID);
         
@@ -32,15 +44,9 @@ public class LineItem {
     public double getQuantity() {
         return quantity;
     }
-
+    
     public void setQuantity(double quantity) {
         this.quantity = quantity;
-    }
-
-    public double getAmountSaved() {
-        // inputed to the line item in order to display to line item reciept
-        // object ---------------------------//method
-        return product.getDiscountStrategy().getDiscountAmount(product.getPrice(), quantity);
     }
 
     public Product getProduct() {

@@ -19,7 +19,8 @@ public class LabPosSystem {
   
      SelfServiceCashRegister newSale = new SelfServiceCashRegister();
      
-     newSale.newCustomerSale(new Reciept(), new FakeDatabase(), "GX589");
+     
+     newSale.newCustomerSale(new RecieptConsoleOutput(), new FakeDatabase(), "GX589");
      newSale.addNewItemToSale("A197", 2);
      newSale.addNewItemToSale("A999", 5);
      newSale.addNewItemToSale("A109", 2);

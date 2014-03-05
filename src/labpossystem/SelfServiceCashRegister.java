@@ -28,7 +28,7 @@ public class SelfServiceCashRegister  {
     
     public void endSale(){
         reciept.getRecieptOutput();
-        reciept.generateRecieptTotals();
+        
     }
 
     public Reciept getReciept() {
