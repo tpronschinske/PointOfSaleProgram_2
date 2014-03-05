@@ -29,8 +29,9 @@ public class Reciept {
     }
      
    private Customer retrieveCustomer(String customerID){
-       Customer seekCustomer = fakeDatabase.retrieveCustomer(customerID);
-       return seekCustomer;
+
+       Customer cust = fakeDatabase.retrieveCustomer(customerID);
+       return cust;
    }
 
   //Gets the bill total before discount
@@ -74,31 +75,36 @@ public class Reciept {
    }
    
    public final void getRecieptHeader(){
-       
+         
           Date date = new Date();
+          String newLine = "\n";
           StringBuilder recieptHeader = new StringBuilder();
           
-          recieptHeader.append("Store: Kohls Department Store" + "  ---   Date of Sale:").append(date.toString());
-          recieptHeader.append("CustomerID: ").append(customer.getCustomerID()).append("Customer Name: ").append(customer.getCustomerName());
-          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
-          recieptHeader.append("Item ID:          Item Description:       Price:         Quantity:          SubTotal:       Discount: " );
-          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
-          recieptHeader.append("-------------------------------------------------------------------------------------------------------");
+          recieptHeader.append("Store: Kohls Department Store" + "  ---   Date of Sale:").append(date.toString()).append(newLine);
+          recieptHeader.append("CustomerID: ").append(customer.getCustomerID()).append("\n").append(newLine);
+          recieptHeader.append("Customer Name: ").append(customer.getCustomerName()).append(newLine);
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
+          recieptHeader.append("Item ID:          Item Description:       Price:         Quantity:          SubTotal:       Discount: " ).append(newLine);
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
+          recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
+   
          output.getRecieptOutput(recieptHeader.toString());
           
    }
    
    public final void getRecieptItems(){
-       
+       String newLineItem = "\n";
+       String lineSpace = "      ";
        StringBuilder recieptItem = new StringBuilder();
        
         for (LineItem items : lineItem) {
-           recieptItem.append(items.getProduct().getProductID());
-           recieptItem.append(items.getProduct().getProductName());
-           recieptItem.append(items.getProduct().getPrice());
-           recieptItem.append(items.getQuantity());
-           recieptItem.append(items.getSubtotalForItem());
-           recieptItem.append(items.getAmountSaved());
+           recieptItem.append(items.getProduct().getProductID()).append(" ");
+           recieptItem.append(items.getProduct().getProductName()).append(" ");
+           recieptItem.append(items.getProduct().getPrice()).append(" ");
+           recieptItem.append(items.getQuantity()).append(" ");
+           recieptItem.append(items.getSubtotalForItem()).append(" ");
+           recieptItem.append(items.getAmountSaved()).append(" ");
+           recieptItem.append(newLineItem);
         }         
         
          output.getRecieptOutput(recieptItem.toString());
@@ -107,13 +113,13 @@ public class Reciept {
    public final void getRecieptTotals(){
        
         StringBuilder recieptTotalFooter = new StringBuilder();
-        
+        String billFormat = "\n";
         double overallBillTotal = getTotalBillForReciept();
         double overallTotalDiscount = getTotalDiscountForReciept();
         
-          recieptTotalFooter.append("-------------------------------------------------------------------------------------------");
-          recieptTotalFooter.append(                                                        "Bill Total: "  +  "Discount Total: ");
-          recieptTotalFooter.append("                                                      $").append(overallBillTotal).append("  $").append(overallTotalDiscount);
+          recieptTotalFooter.append("-------------------------------------------------------------------------------------------").append(billFormat);
+          recieptTotalFooter.append("                                                        Bill Total: "  +  "Discount Total: ").append(billFormat);
+          recieptTotalFooter.append("-------------------------------------------------------$").append(overallBillTotal).append("  $").append(overallTotalDiscount).append(billFormat);
        output.getRecieptOutput(recieptTotalFooter.toString());
    }
    

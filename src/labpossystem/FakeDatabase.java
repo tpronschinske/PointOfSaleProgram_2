@@ -34,22 +34,24 @@ public class FakeDatabase {
         new Product("A789", "Men's Jeans", 19.95, new NoDiscount())
 
     };
-    //Error
+   
     public final Customer retrieveCustomer(String customerID) {
-        Customer customer = null;
         if (customerID == null || customerID.length() == 0) {
             System.out.println("Must have customer ID to process sale");
             return null;
-        } else{
+        } 
+            
+            Customer customer = null;
             for (Customer c : customers) {
                 if (customerID.equals(c.getCustomerID())) {
                     customer = c;
                     break;
                 }
             }
+            return customer;
         }
-        return customer;
-    }
+        
+    
 
     public final Product retrieveProduct(String productID) {
         Product product = null;

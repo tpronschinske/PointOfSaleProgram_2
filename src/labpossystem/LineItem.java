@@ -45,7 +45,7 @@ public class LineItem {
         return quantity;
     }
     
-    public void setQuantity(double quantity) {
+    public final void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
