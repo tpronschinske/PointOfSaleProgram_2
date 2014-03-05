@@ -18,7 +18,7 @@ public class Reciept {
     private FakeDatabase fakeDatabase;
     private Customer customer;
     private LineItem[] lineItem;
-    private int recieptNumber;
+    private int recieptNumber = 0;
 
     public Reciept(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID) {
         this.output = output;
@@ -29,8 +29,8 @@ public class Reciept {
     }
      
    private Customer retrieveCustomer(String customerID){
-       Customer customer = fakeDatabase.retrieveCustomer(customerID);
-       return customer;
+       Customer seekCustomer = fakeDatabase.retrieveCustomer(customerID);
+       return seekCustomer;
    }
 
   //Gets the bill total before discount
@@ -114,8 +114,10 @@ public class Reciept {
           recieptTotalFooter.append("-------------------------------------------------------------------------------------------");
           recieptTotalFooter.append(                                                        "Bill Total: "  +  "Discount Total: ");
           recieptTotalFooter.append("                                                      $").append(overallBillTotal).append("  $").append(overallTotalDiscount);
-    output.getRecieptOutput(recieptTotalFooter.toString());
+       output.getRecieptOutput(recieptTotalFooter.toString());
    }
+   
+   
    
     public RecieptOutputStrategy getOutput() {
         return output;

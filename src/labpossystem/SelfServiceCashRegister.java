@@ -15,8 +15,8 @@ public class SelfServiceCashRegister  {
    
     private Reciept reciept;
 
-    public void newCustomerSale(RecieptOutputStrategy newReciept, FakeDatabase fakeDatabase,String customerID){
-       reciept = new Reciept(newReciept,fakeDatabase,customerID);
+    public void newCustomerSale(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID){
+       reciept = new Reciept(output,fakeDatabase,customerID);
     }
     
     
