@@ -17,8 +17,9 @@ public class LabPosSystem {
      */
     public static void main(String[] args) {
   
+    
+       
      SelfServiceCashRegister newSale = new SelfServiceCashRegister();
-     
      
      newSale.newCustomerSale(new RecieptConsoleOutput(), new FakeDatabase(), "GX589");
      newSale.addNewItemToSale("A197", 2);
@@ -28,7 +29,8 @@ public class LabPosSystem {
      newSale.addNewItemToSale("A164", 1);
      newSale.addNewItemToSale("A111", 1);
      newSale.endSale();
-
+    
+    
     }
     
 }

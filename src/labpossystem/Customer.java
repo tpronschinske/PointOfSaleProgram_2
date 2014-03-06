@@ -15,6 +15,7 @@ public class Customer {
     private String customerName;
     private String customerID;
     
+    
     public Customer(String customerName,String customerID) {
         setCustomerName(customerName);
         setCustomerID(customerID); 
@@ -35,6 +36,9 @@ public class Customer {
     public final void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
+
+
+   
 
   
    

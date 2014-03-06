@@ -12,11 +12,12 @@ package labpossystem;
  */
 public class SelfServiceCashRegister  {
 
-   
+    private PaymentStrategy paymentStrategy;
     private Reciept reciept;
 
     public void newCustomerSale(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID){
        reciept = new Reciept(output,fakeDatabase,customerID);
+     
     }
     
     
@@ -25,12 +26,11 @@ public class SelfServiceCashRegister  {
         reciept.addNewLineItem(productID, quantity);
     }
     
-    
     public void endSale(){
         reciept.getRecieptOutput();
-        
     }
 
+    
     public Reciept getReciept() {
         return reciept;
     }
@@ -38,6 +38,14 @@ public class SelfServiceCashRegister  {
     public void setReciept(Reciept reciept) {
         this.reciept = reciept;
     }
-    
+
+    public PaymentStrategy getPaymentStrategy() {
+        return paymentStrategy;
+    }
+
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
     
 }

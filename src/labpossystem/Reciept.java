@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Celeste
  */
 public class Reciept {
-    
+
     private RecieptOutputStrategy output;
     private FakeDatabase fakeDatabase;
     private Customer customer;
@@ -29,7 +29,6 @@ public class Reciept {
     }
      
    private Customer retrieveCustomer(String customerID){
-
        Customer cust = fakeDatabase.retrieveCustomer(customerID);
        return cust;
    }
@@ -53,6 +52,7 @@ public class Reciept {
        return discountTotal;
    }
    
+   
    //Line item finds product through its ID 
    public final void addNewLineItem(String productID, double quantity){
        LineItem items = new LineItem(fakeDatabase, productID, quantity);
@@ -67,11 +67,10 @@ public class Reciept {
 
    }
    
-   public final void getRecieptOutput(){
+   public void getRecieptOutput(){
        getRecieptHeader();
        getRecieptItems();
-       getRecieptTotals();
-       
+       getRecieptTotals(); 
    }
    
    public final void getRecieptHeader(){
@@ -83,6 +82,7 @@ public class Reciept {
           recieptHeader.append("Store: Kohls Department Store" + "  ---   Date of Sale:").append(date.toString()).append(newLine);
           recieptHeader.append("CustomerID: ").append(customer.getCustomerID()).append("\n").append(newLine);
           recieptHeader.append("Customer Name: ").append(customer.getCustomerName()).append(newLine);
+          recieptHeader.append("Reciept Number: ").append(recieptNumber);
           recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
           recieptHeader.append("Item ID:          Item Description:       Price:         Quantity:          SubTotal:       Discount: " ).append(newLine);
           recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
@@ -94,16 +94,22 @@ public class Reciept {
    
    public final void getRecieptItems(){
        String newLineItem = "\n";
-       String lineSpace = "      ";
+       String lineSpace = " ";
        StringBuilder recieptItem = new StringBuilder();
        
         for (LineItem items : lineItem) {
-           recieptItem.append(items.getProduct().getProductID()).append(" ");
-           recieptItem.append(items.getProduct().getProductName()).append(" ");
-           recieptItem.append(items.getProduct().getPrice()).append(" ");
-           recieptItem.append(items.getQuantity()).append(" ");
-           recieptItem.append(items.getSubtotalForItem()).append(" ");
-           recieptItem.append(items.getAmountSaved()).append(" ");
+           recieptItem.append(items.getProduct().getProductID());
+           recieptItem.append(lineSpace);
+           recieptItem.append(items.getProduct().getProductName());
+           recieptItem.append(lineSpace);
+           recieptItem.append(items.getProduct().getPrice());
+           recieptItem.append(lineSpace);
+           recieptItem.append(items.getQuantity());
+           recieptItem.append(lineSpace);
+           recieptItem.append(items.getSubtotalForItem());
+           recieptItem.append(lineSpace);
+           recieptItem.append(items.getAmountSaved());
+           recieptItem.append(lineSpace);
            recieptItem.append(newLineItem);
         }         
         
@@ -119,7 +125,7 @@ public class Reciept {
         
           recieptTotalFooter.append("-------------------------------------------------------------------------------------------").append(billFormat);
           recieptTotalFooter.append("                                                        Bill Total: "  +  "Discount Total: ").append(billFormat);
-          recieptTotalFooter.append("-------------------------------------------------------$").append(overallBillTotal).append("  $").append(overallTotalDiscount).append(billFormat);
+          recieptTotalFooter.append("--------------------------------------------------------------$").append(overallBillTotal).append("  $").append(overallTotalDiscount).append(billFormat);
        output.getRecieptOutput(recieptTotalFooter.toString());
    }
    
