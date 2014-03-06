@@ -12,13 +12,13 @@ import java.util.Scanner;
  */
 public class CreditCardPayment implements PaymentStrategy {
     
-    private Customer customer;
-    private int cardNumber;
+    
+    private String cardNumber;
     private int cvvNumber;
     private String expirationDate;
+   
 
-    public CreditCardPayment(Customer customer, int cardNumber, int cvvNumber, String expirationDate) {
-        this.customer = customer;
+    public CreditCardPayment(String cardNumber, int cvvNumber, String expirationDate) {
         this.cardNumber = cardNumber;
         this.cvvNumber = cvvNumber;
         this.expirationDate = expirationDate;
@@ -26,46 +26,18 @@ public class CreditCardPayment implements PaymentStrategy {
 
     @Override
     public void getPayment(){
-      
-        Scanner keyboard = new Scanner(System.in);
-        
-        System.out.println("Please Enter Your 16 Digit Card Number: "); 
-         cardNumber = keyboard.nextInt();
-         String ccNum = new Integer(cardNumber).toString();
-         
-         //validation
-         if(ccNum.length() > 16 ){
-             System.out.println("Invalid Card Number Please Re-Enter: ");
-              cardNumber = keyboard.nextInt();
-         }
-        System.out.println("Please Enter Your 3 Digit Code On The Back Of Your Card: ");
-        cvvNumber = keyboard.nextInt();
-        String cvvNum = new Integer(cvvNumber).toString();
-        //validation
-         if(cvvNum.length() > 3){
-             System.out.println("Invalid Please Re-Enter Your 3 Digit CVV Number Located On Back Of Card: ");
-             cvvNumber = keyboard.nextInt();
-         }
-        //needs validation
-        System.out.println("Please Enter Your Expiration Date: "); 
-        expirationDate = keyboard.nextLine();
-        
-        
+        //NEEDS VALIDATION FOR CARD LENGTH AND CVV LENGTH
+        System.out.println("Card Number: " + cardNumber + " CVV Code: " + cvvNumber + " Exp: " + expirationDate);  
+        System.out.println("Approved Thank You For Shopping At Kohls");
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 

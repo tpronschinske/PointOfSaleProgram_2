@@ -17,21 +17,23 @@ public class SelfServiceCashRegister  {
 
     public void newCustomerSale(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID){
        reciept = new Reciept(output,fakeDatabase,customerID);
-       this.paymentStrategy = paymentStrategy;
+       setPaymentStrategy(paymentStrategy);
     }
-    
+
     
     public void addNewItemToSale(String productID, double quantity){
         
         reciept.addNewLineItem(productID, quantity);
+    }
+ 
+    public void getPayment(){
+        paymentStrategy.getPayment();
     }
     
     public void endSale(){
         reciept.getRecieptOutput();
     }
 
-    
-    
     public Reciept getReciept() {
         return reciept;
     }
@@ -48,5 +50,6 @@ public class SelfServiceCashRegister  {
         this.paymentStrategy = paymentStrategy;
     }
 
+    
     
 }

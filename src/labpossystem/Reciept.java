@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Celeste
  */
 public class Reciept {
-
+    private PaymentStrategy paymentStrategy;
     private RecieptOutputStrategy output;
     private FakeDatabase fakeDatabase;
     private Customer customer;
@@ -26,6 +26,7 @@ public class Reciept {
         this.customer = retrieveCustomer(customerID);
         lineItem = new LineItem[0];
         recieptNumber++;
+        this.paymentStrategy = paymentStrategy;
     }
      
    private Customer retrieveCustomer(String customerID){

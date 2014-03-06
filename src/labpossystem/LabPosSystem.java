@@ -16,9 +16,7 @@ public class LabPosSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-  
-    
-       
+
      SelfServiceCashRegister newSale = new SelfServiceCashRegister();
      
      newSale.newCustomerSale(new RecieptConsoleOutput(), new FakeDatabase(), "GX589");
@@ -29,8 +27,14 @@ public class LabPosSystem {
      newSale.addNewItemToSale("A164", 1);
      newSale.addNewItemToSale("A111", 1);
      newSale.endSale();
+     newSale.setPaymentStrategy(new CreditCardPayment("1587460300152987 ", 797, " 12/2/2017"));
+     newSale.getPayment();
+   
      
-    
+     
+     
+     
+     
     }
     
 }
