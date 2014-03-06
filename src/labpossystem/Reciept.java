@@ -34,7 +34,7 @@ public class Reciept {
    }
 
   //Gets the bill total before discount
-   private double getTotalBillForReciept(){
+   public double getTotalBillForReciept(){
        double billTotal = 0.0;
        for(LineItem items: lineItem){
            billTotal += items.getProduct().getPrice();
@@ -161,6 +161,14 @@ public class Reciept {
 
     public void setLineItem(LineItem[] lineItem) {
         this.lineItem = lineItem;
+    }
+
+    public int getRecieptNumber() {
+        return recieptNumber;
+    }
+
+    public void setRecieptNumber(int recieptNumber) {
+        this.recieptNumber = recieptNumber;
     }
    
    

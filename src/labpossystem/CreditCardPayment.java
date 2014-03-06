@@ -12,10 +12,12 @@ import java.util.Scanner;
  */
 public class CreditCardPayment implements PaymentStrategy {
     
+    
     private Customer customer;
     private int cardNumber;
     private int cvvNumber;
     private String expirationDate;
+   
 
     
 
@@ -33,15 +35,18 @@ public class CreditCardPayment implements PaymentStrategy {
         
         System.out.println("Please Enter Your 16 Digit Card Number: "); 
          cardNumber = keyboard.nextInt();
+         String ccNum = new Integer(cardNumber).toString();
+         
          //validation
-         if(cardNumber > 16){
+         if(ccNum.length() > 16 ){
              System.out.println("Invalid Card Number Please Re-Enter: ");
               cardNumber = keyboard.nextInt();
          }
         System.out.println("Please Enter Your 3 Digit Code On The Back Of Your Card: ");
         cvvNumber = keyboard.nextInt();
+        String cvvNum = new Integer(cvvNumber).toString();
         //validation
-         if(cvvNumber > 3){
+         if(cvvNum.length() > 3){
              System.out.println("Invalid Please Re-Enter Your 3 Digit CVV Number Located On Back Of Card: ");
              cvvNumber = keyboard.nextInt();
          }

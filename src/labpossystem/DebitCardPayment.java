@@ -31,9 +31,11 @@ public class DebitCardPayment implements PaymentStrategy{
         if(pinNumber > 4){
             System.out.println("Invalid Pin Please Re-Enter Your Pin Number");
             pinNumber = keyboard.nextInt();
+        } else {
+            System.out.println("Customer ID: " + customer.getCustomerID());
+            System.out.println("Customer: " + customer.getCustomerName());
+            System.out.println("Payment Approved");
         }
-        
-        
     }
 
     public Customer getCustomer() {

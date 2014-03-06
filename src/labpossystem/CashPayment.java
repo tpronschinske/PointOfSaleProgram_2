@@ -15,16 +15,18 @@ public class CashPayment implements PaymentStrategy {
     private Customer customer;
     private double cashPayment = 0.0;
 
-    public CashPayment(Customer customer, double cashPayment) {
+    public CashPayment(double cashPayment) {
         this.cashPayment = cashPayment;
     }
 
     @Override
     public void getPayment(){
-       
+        System.out.println("Customer ID:"); customer.getCustomerID();
+        System.out.println("Customer: " + customer.getCustomerName());
+        System.out.println("Paid With Cash In The Amount Of: $ " + cashPayment);
+              
     }
     
-
     public double getCashPayment() {
         return cashPayment;
     }
