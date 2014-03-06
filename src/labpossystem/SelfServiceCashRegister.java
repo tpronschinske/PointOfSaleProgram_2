@@ -17,7 +17,7 @@ public class SelfServiceCashRegister  {
 
     public void newCustomerSale(RecieptOutputStrategy output, FakeDatabase fakeDatabase,String customerID){
        reciept = new Reciept(output,fakeDatabase,customerID);
-     
+       this.paymentStrategy = paymentStrategy;
     }
     
     
@@ -30,6 +30,7 @@ public class SelfServiceCashRegister  {
         reciept.getRecieptOutput();
     }
 
+    
     
     public Reciept getReciept() {
         return reciept;
