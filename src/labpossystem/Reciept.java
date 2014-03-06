@@ -52,6 +52,9 @@ public class Reciept {
        return discountTotal;
    }
    
+
+   
+   
    
    //Line item finds product through its ID 
    public final void addNewLineItem(String productID, double quantity){
@@ -82,7 +85,7 @@ public class Reciept {
           recieptHeader.append("Store: Kohls Department Store" + "  ---   Date of Sale:").append(date.toString()).append(newLine);
           recieptHeader.append("CustomerID: ").append(customer.getCustomerID()).append("\n").append(newLine);
           recieptHeader.append("Customer Name: ").append(customer.getCustomerName()).append(newLine);
-          recieptHeader.append("Reciept Number: ").append(recieptNumber);
+          recieptHeader.append("Reciept Number: ").append(recieptNumber).append(newLine);
           recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
           recieptHeader.append("Item ID:          Item Description:       Price:         Quantity:          SubTotal:       Discount: " ).append(newLine);
           recieptHeader.append("-------------------------------------------------------------------------------------------------------").append(newLine);
@@ -122,10 +125,13 @@ public class Reciept {
         String billFormat = "\n";
         double overallBillTotal = getTotalBillForReciept();
         double overallTotalDiscount = getTotalDiscountForReciept();
+        double amountDue = overallBillTotal - overallTotalDiscount;
         
           recieptTotalFooter.append("-------------------------------------------------------------------------------------------").append(billFormat);
           recieptTotalFooter.append("                                                        Bill Total: "  +  "Discount Total: ").append(billFormat);
-          recieptTotalFooter.append("--------------------------------------------------------------$").append(overallBillTotal).append("  $").append(overallTotalDiscount).append(billFormat);
+          recieptTotalFooter.append("---------------------------------------------------------$").append(overallBillTotal).append("     $").append(overallTotalDiscount).append(billFormat);
+          recieptTotalFooter.append("_____________________________________________________________________________________________").append(billFormat);
+          recieptTotalFooter.append("                                                          Amount Due: $").append(amountDue);
        output.getRecieptOutput(recieptTotalFooter.toString());
    }
    

@@ -12,14 +12,10 @@ import java.util.Scanner;
  */
 public class CreditCardPayment implements PaymentStrategy {
     
-    
     private Customer customer;
     private int cardNumber;
     private int cvvNumber;
     private String expirationDate;
-   
-
-    
 
     public CreditCardPayment(Customer customer, int cardNumber, int cvvNumber, String expirationDate) {
         this.customer = customer;
