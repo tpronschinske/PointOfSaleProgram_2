@@ -23,7 +23,7 @@ public class CashPayment implements PaymentStrategy {
     public void getPayment(){
         System.out.println("Customer ID:"); customer.getCustomerID();
         System.out.println("Customer: " + customer.getCustomerName());
-        System.out.println("Paid With Cash In The Amount Of: $ " + cashPayment);
+        System.out.println("Paid In Full With Cash, Thank You For Shopping At Kohls");
               
     }
     
