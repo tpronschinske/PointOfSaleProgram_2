@@ -5,20 +5,21 @@
  */
 
 package labpossystem;
-import java.util.Scanner;
+
 /**
  *
  * @author Celeste
  */
 public class CreditCardPayment implements PaymentStrategy {
     
-    
+    private String cardType;
     private String cardNumber;
     private int cvvNumber;
     private String expirationDate;
    
 
-    public CreditCardPayment(String cardNumber, int cvvNumber, String expirationDate) {
+    public CreditCardPayment(String cardType, String cardNumber, int cvvNumber, String expirationDate) {
+        this.cardType = cardType;
         this.cardNumber = cardNumber;
         this.cvvNumber = cvvNumber;
         this.expirationDate = expirationDate;
@@ -26,9 +27,10 @@ public class CreditCardPayment implements PaymentStrategy {
 
     @Override
     public void getPayment(){
-        //NEEDS VALIDATION FOR CARD LENGTH AND CVV LENGTH
-        System.out.println("Card Number: " + cardNumber + " CVV Code: " + cvvNumber + " Exp: " + expirationDate);  
-        System.out.println("Approved Thank You For Shopping At Kohls");
+      
+        System.out.println("Card: " + cardType + " Card Number: " + cardNumber + " CVV Code: " + cvvNumber + " Exp: " + expirationDate);  
+        System.out.println("Payment Approved");
+        System.out.println("Thank You For Shopping At Kohls");
     }
 
 
@@ -55,6 +57,14 @@ public class CreditCardPayment implements PaymentStrategy {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
     
     
